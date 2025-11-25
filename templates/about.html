@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}About - Inventonics Digital{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>ABOUT INVENTONICS</h2>
+            <p>Pioneering the future of fitness through technology and innovation</p>
+        </div>
+        
+        <div class="glass-card" style="margin-bottom: 3rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <h3 style="color: var(--neon-blue); margin-bottom: 1rem;">Our Vision</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">
+                        At INVENTONICS, we believe that fitness should be an immersive, data-driven experience that adapts to each individual's unique needs and goals. We're revolutionizing the way people approach health and wellness.
+                    </p>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">
+                        Founded in 2024, our mission is to merge cutting-edge technology with proven fitness methodologies to create the most effective and engaging workout experiences possible.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="background: rgba(0, 243, 255, 0.1); padding: 1rem; border-radius: var(--border-radius); border: 1px solid rgba(0, 243, 255, 0.3);">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--neon-blue);">50+</div>
+                            <div style="color: var(--text-gray);">Tech Experts</div>
+                        </div>
+                        <div style="background: rgba(179, 0, 255, 0.1); padding: 1rem; border-radius: var(--border-radius); border: 1px solid rgba(179, 0, 255, 0.3);">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--neon-purple);">10K+</div>
+                            <div style="color: var(--text-gray);">Members Served</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-robot" style="font-size: 8rem; color: var(--neon-blue); opacity: 0.7;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-grid">
+            <div class="glass-card">
+                <h3 style="color: var(--neon-blue); margin-bottom: 1rem;">Our Technology</h3>
+                <p style="color: var(--text-gray);">
+                    We utilize artificial intelligence, virtual reality, and advanced biometric sensors to create personalized fitness experiences that deliver real results.
+                </p>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--neon-purple); margin-bottom: 1rem;">Our Team</h3>
+                <p style="color: var(--text-gray);">
+                    Our team consists of fitness experts, data scientists, and technology innovators working together to push the boundaries of what's possible in fitness.
+                </p>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--neon-pink); margin-bottom: 1rem;">Our Community</h3>
+                <p style="color: var(--text-gray);">
+                    Join a growing community of tech-savvy fitness enthusiasts who are embracing the future of workout technology and achieving their goals faster.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

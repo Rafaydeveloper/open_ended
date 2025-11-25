@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSUET Fitness Club | Membership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        /* Membership Page Specific Styles */
+        .membership-hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(179, 0, 255, 0.1));
+        }
+        
+        .membership-hero-content {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .membership-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .membership-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-gray);
+        }
+            .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif;
+    transition: var(--transition);
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group textarea::placeholder {
+    color: var(--text-gray);
+    opacity: 0.7;
+}
+
+/* Optional: Add a subtle glow effect on hover */
+.form-group textarea:hover {
+    border-color: rgba(0, 243, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.1);
+}
+
+/* For the specific goals textarea if you want additional styling */
+#goals {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(179, 0, 255, 0.1);
+}
+
+#goals:focus {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 12px rgba(179, 0, 255, 0.2);
+}
+
+        /* Enhanced version with floating label effect */
+.form-group.floating {
+    position: relative;
+    margin-top: 1.5rem;
+}
+
+.form-group.floating label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    font-size: 0.8rem;
+    background: var(--card-bg);
+    padding: 0 8px;
+    color: var(--neon-blue);
+}
+
+.form-group.floating textarea {
+    padding-top: 16px;
+}
+
+/* Character counter for textarea */
+.textarea-counter {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-top: 5px;
+}
+
+.textarea-counter.warning {
+    color: #ff6b6b;
+}
+    .mem_reg{
+        background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 20px;
+    }
+        .diet-plans {
+            padding: 100px 0;
+            background: var(--darker-bg);
+        }
+        
+        .diet-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .diet-tab {
+            padding: 12px 24px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .diet-tab.active {
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            color: var(--dark-bg);
+            font-weight: 600;
+        }
+        
+        .diet-content {
+            display: none;
+        }
+        
+        .diet-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .diet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .diet-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .diet-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .diet-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .diet-features {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        
+        .diet-features ul {
+            list-style: none;
+        }
+        
+        .diet-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .diet-features i {
+            color: var(--neon-blue);
+            margin-right: 10px;
+        }
+        
+        .registration-section {
+            padding: 100px 0;
+        }
+        
+        .registration-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .registration-form-container {
+            padding: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .registration-image {
+            height: 100%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(179, 0, 255, 0.1));
+            min-height: 500px;
+        }
+        
+        .registration-image i {
+            font-size: 8rem;
+            color: var(--neon-blue);
+            opacity: 0.7;
+        }
+        
+        .membership-benefits {
+            padding: 100px 0;
+            background: var(--darker-bg);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            font-size: 2rem;
+        }
+        
+        .progress-section {
+            padding: 100px 0;
+        }
+        
+        .progress-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .progress-item {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .membership-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(179, 0, 255, 0.1));
+        }
+        
+        .membership-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .membership-cta p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-gray);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .registration-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .registration-image {
+                min-height: 300px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .membership-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .membership-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .diet-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .diet-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <span class="logo_text"><img class="logo_image" src="/static/images/SSUET Fitness Club_W.png" alt="SSUET Fitness Club">SSUET | Student Fitness Club</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('membership')}}">Membership</a></li>
+                    <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Membership Hero Section -->
+    <section class="membership-hero">
+        <div class="container">
+            <div class="membership-hero-content" data-aos="fade-up">
+                <h1>SSUET FITNESS CLUB MEMBERSHIP</h1>
+                <p>Unlock your full potential with our comprehensive membership packages designed specifically for SSUET students and faculty.</p>
+                <a href="#registration" class="btn btn-primary">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diet Plans Section -->
+    <section class="diet-plans">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>PERSONALIZED DIET PLANS</h2>
+                <p>Complement your training with nutrition plans designed by our certified dietitians.</p>
+            </div>
+            
+            <div class="diet-tabs" data-aos="fade-up">
+                <div class="diet-tab active" data-target="weight-loss">Weight Loss</div>
+                <div class="diet-tab" data-target="muscle-gain">Muscle Gain</div>
+                <div class="diet-tab" data-target="maintenance">Maintenance</div>
+                <div class="diet-tab" data-target="vegetarian">Vegetarian</div>
+            </div>
+            
+            <div class="diet-content active" id="weight-loss">
+                <div class="diet-grid">
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="diet-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Calorie Deficit Plan</h3>
+                        <p>Structured meal plans with controlled calories to help you lose weight effectively.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1500-1800 calories daily</li>
+                                <li><i class="fas fa-check"></i> High protein, moderate carbs</li>
+                                <li><i class="fas fa-check"></i> Weekly meal prep guide</li>
+                                <li><i class="fas fa-check"></i> Grocery shopping list</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="diet-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Keto-Friendly Plan</h3>
+                        <p>Low-carb, high-fat diet to accelerate fat burning and weight loss.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Under 50g carbs daily</li>
+                                <li><i class="fas fa-check"></i> Healthy fats emphasis</li>
+                                <li><i class="fas fa-check"></i> Ketosis monitoring guide</li>
+                                <li><i class="fas fa-check"></i> Recipe book included</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="diet-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Intermittent Fasting</h3>
+                        <p>Time-restricted eating patterns to optimize fat loss and metabolic health.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 16:8 fasting protocol</li>
+                                <li><i class="fas fa-check"></i> Meal timing strategies</li>
+                                <li><i class="fas fa-check"></i> Hydration guidelines</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diet-content" id="muscle-gain">
+                 <div class="diet-grid">
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="diet-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Keto-Friendly Plan</h3>
+                        <p>Low-carb, high-fat diet to accelerate fat burning and weight loss.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Under 50g carbs daily</li>
+                                <li><i class="fas fa-check"></i> Healthy fats emphasis</li>
+                                <li><i class="fas fa-check"></i> Ketosis monitoring guide</li>
+                                <li><i class="fas fa-check"></i> Recipe book included</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="diet-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Calorie Deficit Plan</h3>
+                        <p>Structured meal plans with controlled calories to help you lose weight effectively.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1500-1800 calories daily</li>
+                                <li><i class="fas fa-check"></i> High protein, moderate carbs</li>
+                                <li><i class="fas fa-check"></i> Weekly meal prep guide</li>
+                                <li><i class="fas fa-check"></i> Grocery shopping list</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="diet-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Intermittent Fasting</h3>
+                        <p>Time-restricted eating patterns to optimize fat loss and metabolic health.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 16:8 fasting protocol</li>
+                                <li><i class="fas fa-check"></i> Meal timing strategies</li>
+                                <li><i class="fas fa-check"></i> Hydration guidelines</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diet-content" id="maintenance">
+                 <div class="diet-grid">
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="diet-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Intermittent Fasting</h3>
+                        <p>Time-restricted eating patterns to optimize fat loss and metabolic health.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 16:8 fasting protocol</li>
+                                <li><i class="fas fa-check"></i> Meal timing strategies</li>
+                                <li><i class="fas fa-check"></i> Hydration guidelines</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="diet-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Keto-Friendly Plan</h3>
+                        <p>Low-carb, high-fat diet to accelerate fat burning and weight loss.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Under 50g carbs daily</li>
+                                <li><i class="fas fa-check"></i> Healthy fats emphasis</li>
+                                <li><i class="fas fa-check"></i> Ketosis monitoring guide</li>
+                                <li><i class="fas fa-check"></i> Recipe book included</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="diet-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Calorie Deficit Plan</h3>
+                        <p>Structured meal plans with controlled calories to help you lose weight effectively.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1500-1800 calories daily</li>
+                                <li><i class="fas fa-check"></i> High protein, moderate carbs</li>
+                                <li><i class="fas fa-check"></i> Weekly meal prep guide</li>
+                                <li><i class="fas fa-check"></i> Grocery shopping list</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="diet-content" id="vegetarian">
+                <div class="diet-grid">
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="diet-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3>Calorie Deficit Plan</h3>
+                        <p>Structured meal plans with controlled calories to help you lose weight effectively.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1500-1800 calories daily</li>
+                                <li><i class="fas fa-check"></i> High protein, moderate carbs</li>
+                                <li><i class="fas fa-check"></i> Weekly meal prep guide</li>
+                                <li><i class="fas fa-check"></i> Grocery shopping list</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="diet-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Keto-Friendly Plan</h3>
+                        <p>Low-carb, high-fat diet to accelerate fat burning and weight loss.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Under 50g carbs daily</li>
+                                <li><i class="fas fa-check"></i> Healthy fats emphasis</li>
+                                <li><i class="fas fa-check"></i> Ketosis monitoring guide</li>
+                                <li><i class="fas fa-check"></i> Recipe book included</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card diet-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="diet-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Intermittent Fasting</h3>
+                        <p>Time-restricted eating patterns to optimize fat loss and metabolic health.</p>
+                        <div class="diet-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 16:8 fasting protocol</li>
+                                <li><i class="fas fa-check"></i> Meal timing strategies</li>
+                                <li><i class="fas fa-check"></i> Hydration guidelines</li>
+                                <li><i class="fas fa-check"></i> Progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="registration">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>BECOME A MEMBER</h2>
+                <p>Join the SSUET Fitness Club today and start your transformation journey.</p>
+            </div>
+            
+            <div class="registration-container">
+                <div class="glass-card registration-form-container" data-aos="fade-right">
+                    <h3 class="mem_reg">UserRegistration</h3>
+                    <form id="registration-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentId">SSUET Student ID</label>
+                                <input type="text" id="studentId">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <input type="text" id="department">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="membershipPlan">Select Membership Plan</label>
+                            <select id="membershipPlan" required>
+                                <option value="">Choose a plan</option>
+                                <option value="basic">Basic - $49/month</option>
+                                <option value="standard">Standard - $79/month</option>
+                                <option value="premium">Premium - $129/month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dietPlan">Diet Plan Preference</label>
+                            <select id="dietPlan">
+                                <option value="">Select if interested</option>
+                                <option value="weight-loss">Weight Loss</option>
+                                <option value="muscle-gain">Muscle Gain</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="vegetarian">Vegetarian</option>
+                            </select>
+                        </div>
+                        
+                     <div class="form-group floating">
+                        <label for="goals">Fitness Goals</label>
+                        <textarea id="goals" rows="3" placeholder="Tell us about your fitness goals..." maxlength="500"></textarea>
+                        <div class="textarea-counter"><span id="goals-counter">0</span>/500</div>
+                    </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Registration</button>
+                    </form>
+                </div>
+                
+                <div class="registration-image" data-aos="fade-left">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Benefits Section -->
+    <section class="membership-benefits">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>MEMBERSHIP BENEFITS</h2>
+                <p>What you get as a valued member of SSUET Fitness Club</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="glass-card benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Join a supportive community of SSUET students and faculty with similar fitness goals.</p>
+                </div>
+                
+                <div class="glass-card benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Access our digital platform to track your workouts, nutrition, and progress.</p>
+                </div>
+                
+                <div class="glass-card benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Flexible Schedule</h3>
+                    <p>Open 7 days a week with extended hours to fit your academic schedule.</p>
+                </div>
+                
+                <div class="glass-card benefit-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Student Discount</h3>
+                    <p>Exclusive discounted rates for SSUET students with valid ID.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracking Section -->
+    <section class="progress-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>TRACK YOUR PROGRESS</h2>
+                <p>Monitor your fitness journey with our comprehensive tracking system</p>
+            </div>
+            
+            <div class="progress-container">
+                <div class="glass-card" data-aos="fade-up">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Strength Training</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="85"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Cardio Endurance</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="70"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Flexibility</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="60"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span>Nutrition Compliance</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership CTA Section -->
+    <section class="membership-cta">
+        <div class="container">
+            <div data-aos="fade-up">
+                <h2>READY TO TRANSFORM?</h2>
+                <p>Join hundreds of SSUET students who have already started their fitness journey with us.</p>
+                <a href="#registration" class="btn btn-primary">Become a Member Today</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PremiumFit</h3>
+                    <p>Transforming bodies and minds with cutting-edge fitness solutions and expert guidance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#trainers">Trainers</a></li>
+                        <li><a href="#membership">Membership</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Group Classes</a></li>
+                        <li><a href="#">Nutrition Plans</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                        <li><a href="#">Online Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Hours</h3>
+                    <ul class="footer-links">
+                        <li>Monday - Friday: 5:00 AM - 11:00 PM</li>
+                        <li>Saturday: 7:00 AM - 9:00 PM</li>
+                        <li>Sunday: 8:00 AM - 8:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PremiumFit Gym. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Diet Tabs Functionality
+        document.querySelectorAll('.diet-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.diet-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all diet content
+                document.querySelectorAll('.diet-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected diet content
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // Animate progress bars when they come into view
+        const progressBars = document.querySelectorAll('.progress-fill');
+        
+        const animateProgressBars = () => {
+            progressBars.forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                const barBottom = bar.getBoundingClientRect().bottom;
+                
+                if (barTop < window.innerHeight && barBottom > 0) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width + '%';
+                }
+            });
+        };
+        
+        // Initial check and scroll listener
+        animateProgressBars();
+        window.addEventListener('scroll', animateProgressBars);
+        
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your registration! We will contact you soon with further details.');
+            this.reset();
+        });
+
+
+        // Character counter for goals textarea
+const goalsTextarea = document.getElementById('goals');
+const goalsCounter = document.getElementById('goals-counter');
+
+if (goalsTextarea && goalsCounter) {
+    goalsTextarea.addEventListener('input', function() {
+        const count = this.value.length;
+        goalsCounter.textContent = count;
+        
+        if (count > 450) {
+            goalsCounter.classList.add('warning');
+        } else {
+            goalsCounter.classList.remove('warning');
+        }
+    });
+}
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
