@@ -1,71 +1,100 @@
-# Inventonics Digital - Company Website
+# Inventonics Digital – Company Website
 
-A modern, tech-themed company website for Inventonics Digital, showcasing digital services worldwide with a futuristic neon design.
+**Author:** Abdul Rafay  
+**Roll No:** 2025F-BSE-241  
+
+A modern full-stack company website developed for **Inventonics Digital**, showcasing global digital services through a futuristic, tech-inspired user interface. This project integrates a visually engaging frontend with a secure and scalable Flask backend, making it suitable for both academic submission and professional portfolio use.
+
+---
+
+## 📌 Project Overview
+
+The Inventonics Digital website is designed to represent a technology-driven digital agency with a strong online presence. The application follows modern UI/UX principles and full-stack development practices, featuring responsive layouts, authentication, and dynamic content rendering.
+
+The project demonstrates practical implementation of frontend design concepts and backend logic using Python Flask.
+
+---
 
 ## 🚀 Features
 
 ### Frontend Features
-- **Modern Tech Theme**: Cyber grid background with neon blue/purple color scheme
-- **Responsive Design**: Fully responsive layout for all device sizes
-- **Glass Morphism UI**: Beautiful glass card effects with backdrop blur
-- **Interactive Elements**: Hover animations and smooth transitions
-- **Form Validation**: Client and server-side form validation
-- **Team Gallery**: Professional team member display with images and roles
+- Modern tech-themed UI with neon blue and purple color scheme  
+- Cyber grid background and futuristic visual elements  
+- Fully responsive design for all screen sizes  
+- Glassmorphism UI cards with backdrop blur effects  
+- Smooth hover animations and transitions  
+- Clean navigation and structured layout  
+- Client-side form validation  
 
 ### Backend Features
-- **Flask Framework**: Python-based web application
-- **Session Management**: Secure user authentication
-- **Form Handling**: Robust form processing with flash messages
-- **Template Rendendering**: Dynamic HTML content generation
-- **Static File Serving**: Efficient CSS and image delivery
+- Flask (Python) web framework  
+- Secure session-based user authentication  
+- User login and registration system  
+- Server-side form handling with flash messages  
+- Dynamic HTML rendering using Jinja2 templates  
+- Organized static file serving (CSS, images)  
 
-## 📋 Pages Overview
+---
 
-1. **Home Page** (`/`)
-   - Company introduction and hero section
-   - Service highlights
-   - Call-to-action buttons
+## 📄 Pages Overview
 
-2. **About Page** (`/about`)
-   - Company mission and vision
-   - Team information
-   - Company values and achievements
+### Home (`/`)
+- Company introduction and hero section  
+- Overview of services  
+- Call-to-action buttons  
 
-3. **Services Page** (`/services`)
-   - Digital service offerings
-   - Service descriptions with icons
-   - Technology stack information
+### About (`/about`)
+- Company mission and vision  
+- Team introduction  
+- Core values and achievements  
 
-4. **Gallery Page** (`/gallery`)
-   - Team member profiles
-   - Project showcases
-   - Company achievements
+### Services (`/services`)
+- Digital service offerings  
+- Service descriptions with icons  
+- Technology stack overview  
 
-5. **Contact Page** (`/contact`)
-   - Contact form with validation
-   - Company contact information
-   - Service inquiry handling
+### Gallery (`/gallery`)
+- Team member profiles  
+- Project showcases  
+- Company highlights  
 
-6. **Login Page** (`/login`)
-   - User authentication
-   - Session management
-   - Demo credentials provided
+### Contact (`/contact`)
+- Contact form with validation  
+- Company contact details  
+- Service inquiry handling  
 
-7. **Registration Page** (`/register`)
-   - New user registration
-   - Form validation
-   - Account creation
+### Login (`/login`)
+- User authentication system  
+- Session management  
+- Demo credentials support  
 
-## 🛠️ Installation & Setup
+### Registration (`/register`)
+- New user account creation  
+- Input validation  
+- Secure registration flow  
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend:** HTML5, CSS3, JavaScript  
+- **Backend:** Python, Flask  
+- **Templating Engine:** Jinja2  
+- **Styling:** Custom CSS with modern UI effects  
+- **Authentication:** Flask sessions  
+
+---
+
+## ⚙️ Installation & Setup
 
 ### Prerequisites
-- Python 3.7 or higher
-- pip (Python package manager)
+- Python 3.7 or higher  
+- pip (Python package manager)  
 
 ### Step-by-Step Installation
 
-1. **Create Project Structure**
-```bash
-mkdir inventonics-digital
-cd inventonics-digital
-mkdir -p templates static/css static/images
+1. **Create Project Directory**
+   ```bash
+   mkdir inventonics-digital
+   cd inventonics-digital
+   mkdir -p templates static/css static/images
