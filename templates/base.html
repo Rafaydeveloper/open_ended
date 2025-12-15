@@ -18,7 +18,9 @@
             <nav class="navbar">
                 <div class="logo_text">
                     
-                     <img width="300px" class="logo" src="/static/images/inventonics.png" alt="">
+                    <a href="/">
+                        <img width="300px" class="logo" src="/static/images/inventonics.png" alt="">
+                    </a> 
                 </div>
                 <ul class="nav-links">
                     <li><a href="{{ url_for('index') }}" {% if request.endpoint == 'index' %}class="active"{% endif %}>HOME</a></li>
