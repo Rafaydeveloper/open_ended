@@ -1,4 +1,4 @@
-# Inventonics Digital – Company Website
+# Inventonics – GYM Website
 
 **Author:** Abdul Rafay  
 **Roll No:** 2025F-BSE-241  
